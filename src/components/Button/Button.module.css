@@ -1,16 +1,31 @@
 .button {
-  border-radius: 6px;
-  padding: 8px 30px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.25s;
-  font-size: 16px;
-  border: none;
-  width: fit-content;
+	border-radius: 6px;
+	padding: 10px 25px;
+	font-family: inherit;
+	cursor: pointer;
+	transition: background 0.25s;
+	font-size: 16px;
+	border: none;
+	width: fit-content;
+	color: var(--white-color);
+	box-shadow: 0px 10px 30px rgba(254, 114, 76, 0.2);
+	border-radius: 28.5px;
+	display: flex;
+	align-items: center;
+	gap: 9px;
 }
-.button:hover {
-  background: #25285c;
+.accent:hover {
+	background: var(--primary-hover-color);
 }
 .accent {
-  background: #312eb5;
+	background: var(--primary-color);
+}
+
+.big {
+	max-width: 250px;
+	width: 100%;
+	padding: 20px 30px;
+	border-radius: 28.5px;
+	text-transform: uppercase;
+	box-shadow: 0px 10px 40px rgba(122, 129, 190, 0.16);
 }
