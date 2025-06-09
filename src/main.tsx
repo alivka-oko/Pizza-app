@@ -6,7 +6,7 @@ import './index.css';
 import { Menu } from './pages/Menu/Menu';
 import { Cart } from './pages/Cart/Cart';
 import { Error } from './pages/Error/Error';
-import { Layout } from './layout/Menu/Layout';
+import { Layout } from './layout/Layout/Layout';
 
 const route = createBrowserRouter([
 	{

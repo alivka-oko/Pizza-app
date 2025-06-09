@@ -18,7 +18,7 @@ export function Input({
 		<div className={cn(styles['input-container'], className)}>
 			{label ? <label htmlFor={name}>{label}</label> : ''}
 			<div className={styles['input']}>
-				{icon ? <img src={icon} alt='иконка' /> : ''}
+				{icon ? <img src={icon} className={styles['icon']} alt='иконка' /> : ''}
 				<input
 					{...props}
 					onChange={handleChange}

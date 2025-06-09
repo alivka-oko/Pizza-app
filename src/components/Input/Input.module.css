@@ -42,3 +42,14 @@
 .input-field::placeholder {
 	color: var(--text-secondary-color);
 }
+
+.icon:has(+ input:focus) {
+	display: none;
+}
+.icon:has(+ input:not(:placeholder-shown)) {
+	display: none;
+}
+
+.input:has(input:focus){
+	border: 1px solid #8d8d8d;
+}
