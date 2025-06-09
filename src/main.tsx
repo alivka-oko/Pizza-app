@@ -7,19 +7,24 @@ import { Menu } from './pages/Menu/Menu';
 import { Cart } from './pages/Cart/Cart';
 import { Error } from './pages/Error/Error';
 import { Layout } from './layout/Layout/Layout';
+import Product from './pages/Product/Product';
 
 const route = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout/>,
+		element: <Layout />,
 		children: [
 			{
 				path: '/',
-				element: <Menu></Menu>
+				element: <Menu />
 			},
 			{
 				path: '/cart',
-				element: <Cart></Cart>
+				element: <Cart />
+			},
+			{
+				path: '/product/:id',
+				element: <Product />
 			}
 		]
 	},

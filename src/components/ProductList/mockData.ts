@@ -9,7 +9,7 @@ export const mockData: IProductCard[] = [
 		rating: 4.5
 	},
 	{
-		id: 1,
+		id: 2,
 		name: 'Наслаждение',
 		description: 'Салями, руккола, помидоры, оливки',
 		cover: '/pizza.png',
