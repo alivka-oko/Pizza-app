@@ -3,14 +3,22 @@ import styles from './Input.module.css';
 import type { InputProps } from './Input.props';
 import cn from 'classnames';
 
-export function Input({ isValid = true, label, name, ...props }: InputProps) {
+export function Input({
+	isValid = true,
+	label,
+	icon,
+	className,
+	name,
+	...props
+}: InputProps) {
 	const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		console.log(e);
 	};
 	return (
-		<div className={styles['input-container']}>
+		<div className={cn(styles['input-container'], className)}>
 			{label ? <label htmlFor={name}>{label}</label> : ''}
 			<div className={styles['input']}>
+				{icon ? <img src={icon} alt='иконка' /> : ''}
 				<input
 					{...props}
 					onChange={handleChange}

@@ -1,4 +1,9 @@
+import Title from '../../components/Headling/Headling';
 
 export function Cart() {
-	return <>Корзина</>;
+	return (
+		<>
+			<Title>Корзина</Title>
+		</>
+	);
 }
