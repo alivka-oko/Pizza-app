@@ -1,5 +1,6 @@
-import type { IProductCard } from '../ProductCard/IProductCard';
+import type { ProductCardProps } from '../ProductCard/ProductCardProps';
 
 export interface ProductListProps {
-	products: IProductCard[];
+	products: ProductCardProps[];
+	loading: boolean;
 }

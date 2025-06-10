@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
-import type { ProductCardsProps } from './ProductCardProps';
+import type { ProductCardProps } from './ProductCardProps';
 
-export function ProductCard(props: ProductCardsProps) {
+export function ProductCard(props: ProductCardProps) {
 	return (
 		<Link to={`/product/${props.id}`} className={styles['link']}>
 			<div className={styles['card']}>
@@ -20,7 +20,7 @@ export function ProductCard(props: ProductCardsProps) {
 				</div>
 				<div className={styles['footer']}>
 					<h2 className={styles['title']}>{props.name}</h2>
-					<p className={styles['description']}>{props.ingredients}</p>
+					<p className={styles['description']}>{props.ingredients.join(', ')}</p>
 				</div>
 			</div>
 		</Link>
