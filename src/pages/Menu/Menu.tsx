@@ -2,7 +2,6 @@ import InputSearch from '../../components/InputSearch/InputSearch';
 import Headling from '../../components/Headling/Headling';
 import styles from './Menu.module.css';
 import ProductList from '../../components/ProductList/ProductList';
-import { mockData } from '../../components/ProductList/mockData';
 import { PREFIX } from '../../helpers/api';
 import type { Product } from '../../interfaces/product.interface';
 import { useEffect, useState } from 'react';
