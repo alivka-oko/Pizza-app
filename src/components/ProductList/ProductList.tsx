@@ -9,8 +9,8 @@ export function ProductList({ products }: ProductListProps) {
 			key={item.id}
 			name={item.name}
 			price={item.price}
-			description={item.description}
-			cover={item.cover}
+			ingredients={item.ingredients.join(', ')}
+			image={item.image}
 			rating={item.rating}
 		></ProductCard>
 	));

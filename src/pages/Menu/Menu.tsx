@@ -1,17 +1,39 @@
 import InputSearch from '../../components/InputSearch/InputSearch';
-import Title from '../../components/Headling/Headling';
+import Headling from '../../components/Headling/Headling';
 import styles from './Menu.module.css';
 import ProductList from '../../components/ProductList/ProductList';
 import { mockData } from '../../components/ProductList/mockData';
+import { PREFIX } from '../../helpers/api';
+import type { Product } from '../../interfaces/product.interface';
+import { useEffect, useState } from 'react';
 
 export function Menu() {
+	const [products, setProducts] = useState<Product[]>([]);
+	const getMenu = async () => {
+		try {
+			const res = await fetch(`${PREFIX}/products`);
+			if (!res.ok) {
+				return;
+			}
+			const data = (await res.json()) as Product[];
+			setProducts(data);
+		} catch (e) {
+			console.error(e);
+			return;
+		}
+	};
+
+	useEffect(() => {
+		getMenu();
+	}, []);
+
 	return (
 		<>
 			<div className={styles['header']}>
-				<Title>Меню</Title>
+				<Headling>Меню</Headling>
 				<InputSearch></InputSearch>
 			</div>
-			<ProductList products={mockData} />
+			<ProductList products={products} />
 		</>
 	);
 }

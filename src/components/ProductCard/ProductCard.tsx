@@ -8,7 +8,7 @@ export function ProductCard(props: ProductCardsProps) {
 			<div className={styles['card']}>
 				<div
 					className={styles['head']}
-					style={{ backgroundImage: `url(${props.cover})` }}
+					style={{ backgroundImage: `url(${props.image})` }}
 				>
 					<p className={styles['price']}>
 						{props.price} <span className={styles['currency']}>₽</span>
@@ -20,7 +20,7 @@ export function ProductCard(props: ProductCardsProps) {
 				</div>
 				<div className={styles['footer']}>
 					<h2 className={styles['title']}>{props.name}</h2>
-					<p className={styles['description']}>{props.description}</p>
+					<p className={styles['description']}>{props.ingredients}</p>
 				</div>
 			</div>
 		</Link>
