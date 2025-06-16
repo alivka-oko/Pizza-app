@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Headling from '../../components/Headling/Headling';
 import Input from '../../components/Input/Input';
@@ -17,6 +17,7 @@ export type LoginForm = {
 };
 export function Login() {
 	const [error, setError] = useState<string | null>();
+	const navigate = useNavigate();
 	const submit = async (e: FormEvent) => {
 		e.preventDefault();
 		setError(null);
@@ -32,6 +33,7 @@ export function Login() {
 				password
 			});
 			localStorage.setItem('jwt', data.access_token);
+			navigate('/');
 		} catch (e) {
 			if (e instanceof AxiosError) {
 				setError(e.response?.data.message);
@@ -42,7 +44,12 @@ export function Login() {
 		<form onSubmit={submit} className={styles['form']}>
 			<Headling>Вход</Headling>
 			{error && <div className={styles['error']}>{error}</div>}
-			<Input placeholder='Email' name='email' label='Ваш email'></Input>
+			<Input
+				placeholder='Email'
+				type='email'
+				name='email'
+				label='Ваш email'
+			></Input>
 			<Input
 				placeholder='Пароль'
 				name='password'
