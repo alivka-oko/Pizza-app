@@ -1,0 +1,36 @@
+.form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	max-width: 600px;
+	padding: 50px;
+	max-width: 650px;
+}
+
+.link-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.link {
+	text-decoration: none;
+	color: var(--primary-color);
+}
+
+.button {
+	margin: 0 auto;
+	margin-top: 40px;
+	max-width: 75%;
+}
+
+.secondary {
+	color: var(--secondary-color);
+}
+
+.error {
+	background-color: #ffddd4;
+	padding: 20px 10px;
+	color: red;
+}

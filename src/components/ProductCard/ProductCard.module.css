@@ -5,7 +5,7 @@
 }
 .card {
 	width: 323px;
-	color: var(--text-color);
+	color: var(--secondary-color);
 	background: #ffffff;
 	box-shadow: 18.2143px 18.2143px 36.4286px rgba(211, 209, 216, 0.25);
 	border-radius: 18.2143px;

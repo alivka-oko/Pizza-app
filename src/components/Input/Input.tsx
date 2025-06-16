@@ -9,11 +9,9 @@ export function Input({
 	icon,
 	className,
 	name,
+	onChange,
 	...props
 }: InputProps) {
-	const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		console.log(e);
-	};
 	return (
 		<div className={cn(styles['input-container'], className)}>
 			{label ? <label htmlFor={name}>{label}</label> : ''}
@@ -21,7 +19,7 @@ export function Input({
 				{icon ? <img src={icon} className={styles['icon']} alt='иконка' /> : ''}
 				<input
 					{...props}
-					onChange={handleChange}
+					onChange={onChange}
 					id={name}
 					className={cn(styles['input-field'], classNames, {
 						[styles['invalid']]: !isValid

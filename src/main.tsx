@@ -9,13 +9,21 @@ import { Layout } from './layout/Layout/Layout';
 import { Product } from './pages/Product/Product';
 import axios from 'axios';
 import { PREFIX } from './helpers/api';
+import Login from './layout/Login/Login';
+import Register from './layout/Register/Register';
+import AuthLayout from './layout/Auth/AuthLayout';
+import { RequireAuth } from './helpers/RequireAuth';
 
 const Menu = lazy(() => import('./pages/Menu/Menu'));
 
 const route = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout />,
+		element: (
+			<RequireAuth>
+				<Layout />
+			</RequireAuth>
+		),
 		children: [
 			{
 				path: '/',
@@ -48,10 +56,24 @@ const route = createBrowserRouter([
 			}
 		]
 	},
+	{
+		path: '/auth',
+		element: <AuthLayout />,
+		children: [
+			{
+				path: 'login',
+				element: <Login />
+			},
+			{
+				path: 'register',
+				element: <Register />
+			}
+		]
+	},
 
 	{
 		path: '*',
-		element: <ErrorPage></ErrorPage>
+		element: <ErrorPage />
 	}
 ]);
 

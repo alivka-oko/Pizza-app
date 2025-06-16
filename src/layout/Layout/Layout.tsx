@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import Button from '../../components/Button/Button';
-import styles from './layout.module.css';
+import styles from './Layout.module.css';
 export function Layout() {
 	return (
 		<div className={styles['layout']}>
@@ -21,7 +21,11 @@ export function Layout() {
 						Корзина
 					</NavLink>
 				</div>
-				<Button className={styles['exit-button']} icon='/exit.svg'>
+				<Button
+					viewType='small'
+					className={styles['exit-button']}
+					icon='/exit.svg'
+				>
 					Выйти
 				</Button>
 			</div>
