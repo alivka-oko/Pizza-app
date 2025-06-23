@@ -13,6 +13,8 @@ import Login from './layout/Login/Login';
 import Register from './layout/Register/Register';
 import AuthLayout from './layout/Auth/AuthLayout';
 import { RequireAuth } from './helpers/RequireAuth';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 const Menu = lazy(() => import('./pages/Menu/Menu'));
 
@@ -70,7 +72,6 @@ const route = createBrowserRouter([
 			}
 		]
 	},
-
 	{
 		path: '*',
 		element: <ErrorPage />
@@ -79,7 +80,9 @@ const route = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<RouterProvider router={route} />
+		<Provider store={store}>
+			<RouterProvider router={route} />
+		</Provider>
 	</StrictMode>
 );
 
