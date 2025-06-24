@@ -8,40 +8,40 @@ import { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 
 export function Menu() {
-	const [products, setProducts] = useState<Product[]>([]);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [error, setError] = useState<string | undefined>();
-	const getMenu = async () => {
-		try {
-			setIsLoading(true);
-			const { data } = await axios.get<Product[]>(`${PREFIX}/products`);
-			setProducts(data);
-		} catch (e) {
-			console.error(e);
-			if (e instanceof AxiosError) {
-				setError(e.message);
-			}
-			return;
-		} finally {
-			setIsLoading(false);
-		}
-	};
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | undefined>();
+  const getMenu = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.get<Product[]>(`${PREFIX}/products`);
+      setProducts(data);
+    } catch (e) {
+      console.error(e);
+      if (e instanceof AxiosError) {
+        setError(e.message);
+      }
+      return;
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-	useEffect(() => {
-		getMenu();
-	}, []);
+  useEffect(() => {
+    getMenu();
+  }, []);
 
-	return (
-		<>
-			<div className={styles['header']}>
-				<Headling>Меню</Headling>
-				<InputSearch></InputSearch>
-			</div>
-			{error && <>{error}</>}
-			{!isLoading && <ProductList products={products} />}
-			{isLoading && <>Загружаем продукты...</>}
-		</>
-	);
+  return (
+    <>
+      <div className={styles['header']}>
+        <Headling>Меню</Headling>
+        <InputSearch></InputSearch>
+      </div>
+      {error && <>{error}</>}
+      {!isLoading && <ProductList products={products} />}
+      {isLoading && <>Загружаем продукты...</>}
+    </>
+  );
 }
 
 export default Menu;

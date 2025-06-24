@@ -1,45 +1,49 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import styles from './Layout.module.css';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../../store/store';
+import { userActions } from '../../store/user.slice';
 export function Layout() {
-	const navigate = useNavigate();
-	const logout = () => {
-		localStorage.removeItem('jwt');
-		navigate('/auth/login');
-	};
-	return (
-		<div className={styles['layout']}>
-			<div className={styles['left-side']}>
-				<div className={styles['user']}>
-					<img src='/user-image.png' alt='' className={styles['user-image']} />
-					<div className={styles['user-name']}>
-						<p className={styles['name']}>Антон Ларичев</p>
-						<p className={styles['email']}>alaricode@ya.ru</p>
-					</div>
-				</div>
-				<div className={styles['menu']}>
-					<NavLink className={styles['link']} to='/'>
-						<img src='/document.svg' alt='Иконка меню' /> Меню
-					</NavLink>
-					<NavLink className={styles['link']} to='/cart'>
-						<img src='/cart.svg' alt='Иконка корзины' />
-						Корзина
-					</NavLink>
-				</div>
-				<Button
-					viewType='small'
-					className={styles['exit-button']}
-					icon='/exit.svg'
-					onClick={logout}
-				>
-					Выйти
-				</Button>
-			</div>
-			<div className={styles['right-side']}>
-				<Outlet></Outlet>
-			</div>
-		</div>
-	);
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const logout = () => {
+    dispatch(userActions.logout());
+    navigate('/auth/login');
+  };
+  return (
+    <div className={styles['layout']}>
+      <div className={styles['left-side']}>
+        <div className={styles['user']}>
+          <img src='/user-image.png' alt='' className={styles['user-image']} />
+          <div className={styles['user-name']}>
+            <p className={styles['name']}>Антон Ларичев</p>
+            <p className={styles['email']}>alaricode@ya.ru</p>
+          </div>
+        </div>
+        <div className={styles['menu']}>
+          <NavLink className={styles['link']} to='/'>
+            <img src='/document.svg' alt='Иконка меню' /> Меню
+          </NavLink>
+          <NavLink className={styles['link']} to='/cart'>
+            <img src='/cart.svg' alt='Иконка корзины' />
+            Корзина
+          </NavLink>
+        </div>
+        <Button
+          viewType='small'
+          className={styles['exit-button']}
+          icon='/exit.svg'
+          onClick={logout}
+        >
+          Выйти
+        </Button>
+      </div>
+      <div className={styles['right-side']}>
+        <Outlet></Outlet>
+      </div>
+    </div>
+  );
 }
 
 export default Layout;

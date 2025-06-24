@@ -31,7 +31,7 @@ export default tseslint.config(
       'comma-dangle': ['error', 'never'],
       'react/prop-types': 'off',
       quotes: ['error', 'single'],
-      indent: ['error', 'tab'],
+      indent: ['error', 2],
     },
   }
 );
