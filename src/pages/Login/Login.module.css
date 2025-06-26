@@ -29,8 +29,4 @@
 	color: var(--secondary-color);
 }
 
-.error {
-	background-color: #ffddd4;
-	padding: 20px 10px;
-	color: red;
-}
+

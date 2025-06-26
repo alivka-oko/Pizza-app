@@ -18,7 +18,11 @@ export type LoginForm = {
 export function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { jwt, loginErrorMessage } = useSelector((s: RootState) => s.user);
+  const { jwt, authErrorMessage } = useSelector((s: RootState) => s.user);
+
+  useEffect(() => {
+    dispatch(userActions.clearAuthError());
+  }, [dispatch]);
 
   useEffect(() => {
     if (jwt) {
@@ -28,7 +32,7 @@ export function Login() {
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
-    dispatch(userActions.clearLoginError());
+    dispatch(userActions.clearAuthError());
     const target = e.target as typeof e.target & LoginForm;
     const { email, password } = target;
     await sendLogin(email.value, password.value);
@@ -40,9 +44,7 @@ export function Login() {
   return (
     <form onSubmit={submit} className={styles['form']}>
       <Headling>Вход</Headling>
-      {loginErrorMessage && (
-        <div className={styles['error']}>{loginErrorMessage}</div>
-      )}
+      {authErrorMessage && <div className='error'>{authErrorMessage}</div>}
       <Input
         placeholder='Email'
         type='email'

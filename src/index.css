@@ -1,24 +1,30 @@
 :root {
-	--font: 'Open Sans', sans-serif;
-	--primary-color: #fe724c;
-	--secondary-color: #5b5b5e;
-	--primary-hover-color: #d65b39;
-	--text-color: #000000;
-	--text-secondary-color: #9ea1b1;
-	--white-color: #ffffff;
-	--separator-color: #d4d6e0;
+  --font: 'Open Sans', sans-serif;
+  --primary-color: #fe724c;
+  --secondary-color: #5b5b5e;
+  --primary-hover-color: #d65b39;
+  --text-color: #000000;
+  --text-secondary-color: #9ea1b1;
+  --white-color: #ffffff;
+  --separator-color: #d4d6e0;
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .active {
-	color: var(--primary-hover-color) !important;
+  color: var(--primary-hover-color) !important;
+}
+
+.error {
+  background-color: #ffddd4;
+  padding: 20px 10px;
+  color: red;
 }

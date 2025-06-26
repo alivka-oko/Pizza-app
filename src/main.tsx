@@ -10,7 +10,7 @@ import { Product } from './pages/Product/Product';
 import axios from 'axios';
 import { PREFIX } from './helpers/api';
 import Login from './pages/Login/Login';
-import Register from './layout/Register/Register';
+import Register from './pages/Register/Register';
 import AuthLayout from './layout/Auth/AuthLayout';
 import { RequireAuth } from './helpers/RequireAuth';
 import { store } from './store/store';

@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { loadState } from './storage';
 import axios, { AxiosError } from 'axios';
 import { PREFIX } from '../helpers/api';
-import type { LoginResponse } from '../interfaces/auth.interface';
+import type { AuthResponse } from '../interfaces/auth.interface';
 import type { Profile } from '../interfaces/user.interface';
 import type { RootState } from './store';
 
 export interface UserState {
   jwt: string | null;
-  loginErrorMessage?: string;
+  authErrorMessage?: string;
   profile?: Profile;
 }
 export interface UserPersistentState {
@@ -25,10 +25,31 @@ export const login = createAsyncThunk(
   'user/login',
   async (params: { email: string; password: string }) => {
     try {
-      const { data } = await axios.post<LoginResponse>(`${PREFIX}/auth/login`, {
+      const { data } = await axios.post<AuthResponse>(`${PREFIX}/auth/login`, {
         email: params.email,
         password: params.password
       });
+      return data;
+    } catch (e) {
+      if (e instanceof AxiosError) {
+        throw new Error(e.response?.data.message);
+      }
+    }
+  }
+);
+
+export const register = createAsyncThunk(
+  'user/register',
+  async (params: { email: string; password: string; name: string }) => {
+    try {
+      const { data } = await axios.post<AuthResponse>(
+        `${PREFIX}/auth/register`,
+        {
+          email: params.email,
+          password: params.password,
+          name: params.name
+        }
+      );
       return data;
     } catch (e) {
       if (e instanceof AxiosError) {
@@ -58,8 +79,8 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.jwt = null;
     },
-    clearLoginError: (state) => {
-      state.loginErrorMessage = undefined;
+    clearAuthError: (state) => {
+      state.authErrorMessage = undefined;
     }
   },
   extraReducers: (builder) => {
@@ -71,13 +92,20 @@ export const userSlice = createSlice({
     });
     builder.addCase(login.rejected, (state, action) => {
       console.log(action);
-      state.loginErrorMessage = action.error.message;
+      state.authErrorMessage = action.error.message;
+    });
+    builder.addCase(register.fulfilled, (state, action) => {
+      if (!action.payload) {
+        return;
+      }
+      state.jwt = action.payload.access_token;
+    });
+    builder.addCase(register.rejected, (state, action) => {
+      console.log(action);
+      state.authErrorMessage = action.error.message;
     });
     builder.addCase(getProfile.fulfilled, (state, action) => {
       state.profile = action.payload;
-    });
-    builder.addCase(getProfile.rejected, (state, action) => {
-      console.log(action);
     });
   }
 });
