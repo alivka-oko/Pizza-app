@@ -3,9 +3,13 @@ import { loadState } from './storage';
 import axios, { AxiosError } from 'axios';
 import { PREFIX } from '../helpers/api';
 import type { LoginResponse } from '../interfaces/auth.interface';
+import type { Profile } from '../interfaces/user.interface';
+import type { RootState } from './store';
+
 export interface UserState {
   jwt: string | null;
   loginErrorMessage?: string;
+  profile?: Profile;
 }
 export interface UserPersistentState {
   jwt: string | null;
@@ -14,7 +18,7 @@ export interface UserPersistentState {
 export const JWT_PERSISTENT_STATE = 'userData';
 
 const initialState: UserState = {
-  jwt: loadState(JWT_PERSISTENT_STATE) ?? null
+  jwt: loadState<UserPersistentState>(JWT_PERSISTENT_STATE)?.jwt ?? null
 };
 
 export const login = createAsyncThunk(
@@ -31,6 +35,19 @@ export const login = createAsyncThunk(
         throw new Error(e.response?.data.message);
       }
     }
+  }
+);
+
+export const getProfile = createAsyncThunk<Profile, void, { state: RootState }>(
+  'user/getProfile',
+  async () => {
+    const jwt = loadState<UserPersistentState>(JWT_PERSISTENT_STATE)?.jwt;
+    const { data } = await axios.get<Profile>(`${PREFIX}/user/profile`, {
+      headers: {
+        Authorization: `Bearer ${jwt}`
+      }
+    });
+    return data;
   }
 );
 
@@ -55,6 +72,12 @@ export const userSlice = createSlice({
     builder.addCase(login.rejected, (state, action) => {
       console.log(action);
       state.loginErrorMessage = action.error.message;
+    });
+    builder.addCase(getProfile.fulfilled, (state, action) => {
+      state.profile = action.payload;
+    });
+    builder.addCase(getProfile.rejected, (state, action) => {
+      console.log(action);
     });
   }
 });
