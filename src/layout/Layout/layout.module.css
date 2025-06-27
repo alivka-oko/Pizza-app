@@ -1,73 +1,88 @@
 .layout {
-	display: flex;
-	min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
 }
 
 .left-side {
-	flex-basis: 240px;
-	border-right: 1px solid #d4d6e0;
-	padding: 30px;
-	display: flex;
-	flex-direction: column;
-	gap: 46px;
+  flex-basis: 240px;
+  border-right: 1px solid #d4d6e0;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
 }
 
 .user {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .user-image {
-	filter: drop-shadow(0px 0px 40px rgba(255, 198, 41, 0.527));
-	width: 90px;
+  filter: drop-shadow(0px 0px 40px rgba(255, 198, 41, 0.527));
+  width: 90px;
 }
 
 .name {
-	font-weight: 700;
-	font-size: 20px;
-	line-height: 27px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
 
-	color: var(--text-color);
+  color: var(--text-color);
 }
 
 .email {
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 19px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
 
-	color: var(--text-secondary-color);
+  color: var(--text-secondary-color);
 }
 
 .exit-button {
-	margin-top: auto;
-	padding: 9px 25px 9px 9px;
+  margin-top: auto;
+  padding: 9px 25px 9px 9px;
 }
 
 .menu {
-	display: flex;
-	flex-direction: column;
-	gap: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
 }
 
 .link {
-	text-decoration: none;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 22px;
-	color: var(--text-color);
-	display: flex;
-	gap: 14px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--text-color);
+  display: flex;
+  gap: 14px;
 }
 
 .active {
-	color: var(--primary-hover-color);
+  color: var(--primary-hover-color);
 }
 
 .link:hover {
-	color: var(--primary-hover-color);
+  color: var(--primary-hover-color);
 }
 
 .right-side {
-	padding: 40px 65px;
+  padding: 40px 65px;
   width: 100%;
+}
+
+.cart-counter {
+  background-color: var(--primary-color);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #ffffff;
 }

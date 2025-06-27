@@ -36,8 +36,8 @@ export function Layout() {
           </NavLink>
           <NavLink className={styles['link']} to='/cart'>
             <img src='/cart.svg' alt='Иконка корзины' />
-            Корзина{' '}
-            <span>
+            Корзина
+            <span className={styles['cart-counter']}>
               {items.reduce((acc, i) => {
                 return (acc += i.count);
               }, 0)}
