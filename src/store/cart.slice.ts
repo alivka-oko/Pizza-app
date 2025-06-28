@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-interface CartItem {
+export interface CartItem {
   id: number;
   count: number;
 }
