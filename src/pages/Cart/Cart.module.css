@@ -1,6 +1,52 @@
+.container {
+  max-width: 520px;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  align-items: center;
+}
+.info {
+  width: 100%;
+}
+
 .cart {
   display: flex;
   flex-direction: column;
   gap: 27px;
   margin: 40px 0;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f1f2f3;
+  padding: 14px 0;
+  width: 100%;
+}
+
+.order .line:last-of-type {
+  border: none;
+}
+
+.price {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.price::after {
+  content: '₽';
+  font-size: 14px;
+  line-height: 19px;
+  color: #9796a1;
+}
+
+.items-count {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #bebebe;
 }

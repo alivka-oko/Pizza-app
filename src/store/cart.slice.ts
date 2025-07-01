@@ -1,4 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { loadState } from './storage';
+import { JWT_PERSISTENT_STATE } from './user.slice';
 export interface CartItem {
   id: number;
   count: number;
@@ -7,9 +9,12 @@ export interface CartItem {
 export interface CartState {
   items: CartItem[];
 }
+export interface CartPersisntentState {
+  cart: CartItem[] | null;
+}
 
 const initialState: CartState = {
-  items: []
+  items: loadState<CartPersisntentState>(JWT_PERSISTENT_STATE)?.cart || []
 };
 
 export const cartSlice = createSlice({
@@ -48,6 +53,9 @@ export const cartSlice = createSlice({
       } else {
         state.items = state.items.filter((i) => i.id !== action.payload);
       }
+    },
+    clearCart: (state) => {
+      state.items = [];
     }
   }
 });
