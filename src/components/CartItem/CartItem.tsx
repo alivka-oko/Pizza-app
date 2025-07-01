@@ -10,11 +10,15 @@ export function ProductCard(props: CartItemProps) {
   const increment = () => {
     dispatch(cartActions.add(props.id));
   };
-  const decrement = () => {};
-  const remove = () => {};
+  const decrement = () => {
+    dispatch(cartActions.remove(props.id));
+  };
+  const deleteItem = () => {
+    dispatch(cartActions.delete(props.id));
+  };
   return (
     <div className={styles['card']}>
-      <img src={props.image} alt='' />
+      <img className={styles['image']} src={props.image} alt='' />
       <div className={styles['description']}>
         <h2 className={styles['name']}>{props.name}</h2>
         <p className={styles['price']}>
@@ -22,16 +26,30 @@ export function ProductCard(props: CartItemProps) {
         </p>
       </div>
       <div className={styles['counter']}>
-        <button className={styles['add-to-cart']} onClick={decrement}>
-          <img src='/add-to-cart.svg' alt='Удалить из корзины' />
+        <button
+          className={`${styles['remove-from-cart']} ${styles['counter-button']}`}
+          onClick={decrement}
+        >
+          <img
+            src='/minus.svg'
+            className={styles['counter-image']}
+            alt='Удалить из корзины'
+          />
         </button>
-        <p className={styles['rating']}>{props.count}</p>
-        <button className={styles['add-to-cart']} onClick={increment}>
-          <img src='/add-to-cart.svg' alt='Добавить в корзину' />
+        <p className={styles['count']}>{props.count}</p>
+        <button
+          className={`${styles['add-to-cart']} ${styles['counter-button']}`}
+          onClick={increment}
+        >
+          <img
+            src='/plus.svg'
+            className={styles['counter-image']}
+            alt='Добавить в корзину'
+          />
         </button>
       </div>
-      <button className={styles['remove']} onClick={remove}>
-        <img src='/add-to-cart.svg' alt='Удалить все' />
+      <button className={styles['remove']} onClick={deleteItem}>
+        <img src='/remove.svg' alt='Удалить все' />
       </button>
     </div>
   );

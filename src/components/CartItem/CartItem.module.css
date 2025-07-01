@@ -1,0 +1,71 @@
+.card {
+  display: flex;
+  width: 100%;
+  max-width: 520px;
+  gap: 21px;
+  justify-content: space-between;
+}
+.image {
+  width: 82px;
+  height: 82px;
+  object-fit: cover;
+  object-position: left;
+  border-radius: 20px;
+  filter: drop-shadow(0px 8px 25px rgba(224, 219, 196, 0.9));
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: auto;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 18.2143px;
+  line-height: 25px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fe724c;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.counter-button {
+  width: 28.28px;
+  height: 28.28px;
+  background: none;
+  cursor: pointer;
+  border: 1px solid var(--primary-color);
+  filter: drop-shadow(0px 20px 30px #eef0f2);
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-button:hover {
+  background: var(--primary-color);
+  box-shadow: 0px 7px 15px 0px #fe724c66;
+  filter: brightness(1);
+}
+
+.counter-button:hover .counter-image {
+  filter: grayscale(1) brightness(1000%);
+}
+
+.remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

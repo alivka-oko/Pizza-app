@@ -6,6 +6,7 @@ import type Product from '../Product/Product';
 import axios from 'axios';
 import { PREFIX } from '../../helpers/api';
 import CartItem from '../../components/CartItem/CartItem';
+import styles from './cart.module.css';
 
 export function Cart() {
   const items = useSelector((s: RootState) => s.cart.items);
@@ -27,13 +28,15 @@ export function Cart() {
   return (
     <>
       <Title>Корзина</Title>
-      {items.map((i) => {
-        const product = cartProducts.find((p) => p.id === i.id);
-        if (!product) {
-          return;
-        }
-        return <CartItem count={i.count} {...product}></CartItem>;
-      })}
+      <div className={styles['cart']}>
+        {items.map((i) => {
+          const product = cartProducts.find((p) => p.id === i.id);
+          if (!product) {
+            return;
+          }
+          return <CartItem count={i.count} {...product} key={i.id}></CartItem>;
+        })}
+      </div>
     </>
   );
 }
