@@ -15,6 +15,7 @@ import AuthLayout from './layout/Auth/AuthLayout';
 import { RequireAuth } from './helpers/RequireAuth';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
+import Success from './pages/Success/Success';
 
 const Menu = lazy(() => import('./pages/Menu/Menu'));
 
@@ -38,6 +39,10 @@ const route = createBrowserRouter([
       {
         path: '/cart',
         element: <Cart />
+      },
+      {
+        path: '/success',
+        element: <Success />
       },
       {
         path: '/product/:id',

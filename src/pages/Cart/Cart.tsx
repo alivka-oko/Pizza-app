@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Title from '../../components/Headling/Headling';
-import type { RootState } from '../../store/store';
+import { type AppDispatch, type RootState } from '../../store/store';
 import { useEffect, useState } from 'react';
 import type Product from '../Product/Product';
 import axios from 'axios';
@@ -8,11 +8,16 @@ import { PREFIX } from '../../helpers/api';
 import CartItem from '../../components/CartItem/CartItem';
 import styles from './cart.module.css';
 import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
+import { cartActions } from '../../store/cart.slice';
 
 const DELIVERY_FEE = 190;
 
 export function Cart() {
   const items = useSelector((s: RootState) => s.cart.items);
+  const jwt = useSelector((s: RootState) => s.user.jwt);
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const [cartProducts, setCardProducts] = useState<Product[]>([]);
   const getItem = async (id: number) => {
     const { data } = await axios.get<Product>(`${PREFIX}/products/${id}`);
@@ -32,6 +37,22 @@ export function Cart() {
   const loadAllItems = async () => {
     const res = await Promise.all(items.map((i) => getItem(i.id)));
     setCardProducts(res);
+  };
+
+  const checkout = async () => {
+    await axios.post(
+      `${PREFIX}/order`,
+      {
+        products: [...items]
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${jwt}`
+        }
+      }
+    );
+    dispatch(cartActions.clearCart());
+    navigate('/success');
   };
 
   useEffect(() => {
@@ -68,7 +89,9 @@ export function Cart() {
             <span className={styles['price']}>{total + DELIVERY_FEE}</span>
           </div>
         </div>
-        <Button viewType='big'>Оформить</Button>
+        <Button viewType='big' onClick={checkout}>
+          Оформить
+        </Button>
       </div>
     </div>
   );
