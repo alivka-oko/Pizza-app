@@ -3,6 +3,7 @@ import styles from './CartItem.module.css';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../../store/store';
 import { cartActions } from '../../store/cart.slice';
+import { Link } from 'react-router-dom';
 
 export function ProductCard(props: CartItemProps) {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +19,9 @@ export function ProductCard(props: CartItemProps) {
   };
   return (
     <div className={styles['card']}>
-      <img className={styles['image']} src={props.image} alt='' />
+      <Link to={`/product/${props.id}`}>
+        <img className={styles['image']} src={props.image} alt='' />
+      </Link>
       <div className={styles['description']}>
         <h2 className={styles['name']}>{props.name}</h2>
         <p className={styles['price']}>

@@ -7,10 +7,12 @@ import type { MouseEvent } from 'react';
 
 export const AddToCardButton = ({
   id,
-  label
+  label,
+  className
 }: {
   id: number;
   label?: string;
+  className?: string;
 }) => {
   const dispatch = useDispatch<AppDispatch>();
   const increment = (e: MouseEvent) => {
@@ -27,7 +29,7 @@ export const AddToCardButton = ({
   const defaultView = () => {
     return (
       <button
-        className={cn(styles['add-to-cart'], {
+        className={cn(styles['add-to-cart'], className, {
           [styles['with-text']]: label
         })}
         onClick={increment}
@@ -40,7 +42,7 @@ export const AddToCardButton = ({
 
   const counterView = () => {
     return (
-      <div className={styles['counter']}>
+      <div className={cn(styles['counter'], className)}>
         <button onClick={decrement} className={styles['counter-button']}>
           <img src='/minus.svg' alt='Добавить в корзину' />
         </button>

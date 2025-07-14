@@ -1,0 +1,90 @@
+.top {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.add {
+  margin-left: auto;
+}
+
+.back {
+  width: 38px;
+  height: 38px;
+  background: #ffffff;
+  box-shadow: 5px 10px 20px rgba(211, 209, 216, 0.3);
+  border: none;
+  border-radius: 15px;
+  background-image: url(/back.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.block {
+  position: static !important;
+  width: max-content;
+}
+
+.info {
+  width: 100%;
+}
+
+.params {
+  width: 100%;
+  max-width: 240px;
+}
+
+.content {
+  display: flex;
+  gap: 50px;
+  padding: 40px 0;
+  width: 100%;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.line {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #f1f2f3;
+}
+
+.params .line:last-of-type {
+  border-bottom: none;
+}
+
+.price::after {
+  content: '₽';
+  font-size: 14px;
+  line-height: 19px;
+  color: #9796a1;
+  margin-left: 5px;
+}
+
+.list {
+  color: var(--secondary-color);
+}
+
+.list-title {
+  font-weight: 600;
+  font-size: 14.5714px;
+  line-height: 20px;
+}
+
+.ingredients {
+  margin-left: 20px;
+  padding: 8px 0;
+}
+
+.ingredient {
+  font-weight: 400;
+  font-size: 14.5714px;
+  line-height: 20px;
+  text-transform: capitalize;
+}
