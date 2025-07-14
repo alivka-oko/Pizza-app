@@ -49,7 +49,7 @@ export function Menu() {
       </div>
       {error && <>{error}</>}
       {!isLoading && <ProductList products={products} />}
-      {!products.length && <>Ничего не найдено :(</>}
+      {!products.length && !isLoading && <>Ничего не найдено :(</>}
       {isLoading && <>Загружаем продукты...</>}
     </>
   );

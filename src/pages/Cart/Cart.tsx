@@ -40,6 +40,9 @@ export function Cart() {
   };
 
   const checkout = async () => {
+    if (!items.length) {
+      return;
+    }
     await axios.post(
       `${PREFIX}/order`,
       {
@@ -63,6 +66,7 @@ export function Cart() {
     <div className={styles['container']}>
       <Title>Корзина</Title>
       <div className={styles['cart']}>
+        {!items.length && <p>В корзине ничего нет :(</p>}
         {items.map((i) => {
           const product = cartProducts.find((p) => p.id === i.id);
           if (!product) {
