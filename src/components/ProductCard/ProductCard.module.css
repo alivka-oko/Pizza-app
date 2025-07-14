@@ -36,15 +36,6 @@
 	color: var(--primary-color);
 }
 
-.add-to-cart {
-	background: var(--primary-color);
-	border: none;
-	cursor: pointer;
-	width: 34px;
-	height: 34px;
-	border-radius: 100%;
-}
-
 .head {
 	display: flex;
 	justify-content: space-between;

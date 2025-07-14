@@ -1,0 +1,39 @@
+.add-to-cart {
+  background: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border-radius: 100%;
+}
+
+.with-text {
+  color: white;
+  width: max-content;
+  border-radius: 28.5px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+}
+
+.counter {
+  display: flex;
+  gap: 10px;
+  background-color: var(--primary-color);
+  width: max-content;
+  height: max-content;
+  padding: 8px 10px;
+  color: white;
+  border-radius: 18px;
+}
+
+.counter-button {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  filter: brightness(10);
+}
