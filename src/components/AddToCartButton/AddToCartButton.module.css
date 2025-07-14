@@ -41,3 +41,10 @@
   padding: 10px 8px;
   filter: brightness(10);
 }
+
+.value {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+}

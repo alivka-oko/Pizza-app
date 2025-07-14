@@ -1,11 +1,11 @@
 import type { AppDispatch, RootState } from '../../store/store';
 import { cartActions } from '../../store/cart.slice';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './addToCardButton.module.css';
+import styles from './addToCartButton.module.css';
 import cn from 'classnames';
-import type { MouseEvent } from 'react';
+import { useMemo, type MouseEvent } from 'react';
 
-export const AddToCardButton = ({
+export const AddToCartButton = ({
   id,
   label,
   className
@@ -24,7 +24,7 @@ export const AddToCardButton = ({
     dispatch(cartActions.remove(id));
   };
   const cart = useSelector((s: RootState) => s.cart.items);
-  const isExist = cart.find((i) => i.id === id);
+  const isExist = useMemo(() => cart.find((i) => i.id === id), [cart, id]);
 
   const defaultView = () => {
     return (
@@ -34,7 +34,7 @@ export const AddToCardButton = ({
         })}
         onClick={increment}
       >
-        <img src='/add-to-cart.svg' alt='' />
+        <img src='/add-to-cart.svg' alt='Добавить в корзину' />
         {label}
       </button>
     );
@@ -46,7 +46,7 @@ export const AddToCardButton = ({
         <button onClick={decrement} className={styles['counter-button']}>
           <img src='/minus.svg' alt='Добавить в корзину' />
         </button>
-        <p className='value'>{isExist?.count}</p>
+        <p className={styles['value']}>{isExist?.count}</p>
         <button onClick={increment} className={styles['counter-button']}>
           <img src='/plus.svg' alt='Убрать из корзины' />
         </button>
@@ -54,14 +54,7 @@ export const AddToCardButton = ({
     );
   };
 
-  const view = () => {
-    if (isExist) {
-      return counterView();
-    }
-    return defaultView();
-  };
-
-  return view();
+  return isExist ? counterView() : defaultView();
 };
 
-export default AddToCardButton;
+export default AddToCartButton;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 import type { ProductCardProps } from './ProductCardProps';
-import AddToCardButton from '../AddToCardButton/addToCardButton';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 export function ProductCard(props: ProductCardProps) {
   return (
@@ -14,7 +14,7 @@ export function ProductCard(props: ProductCardProps) {
           <p className={styles['price']}>
             {props.price} <span className={styles['currency']}>₽</span>
           </p>
-          <AddToCardButton id={props.id}></AddToCardButton>
+          <AddToCartButton id={props.id}></AddToCartButton>
           <p className={styles['rating']}>{props.rating}</p>
         </div>
         <div className={styles['footer']}>

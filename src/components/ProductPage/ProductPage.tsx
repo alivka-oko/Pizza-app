@@ -1,9 +1,9 @@
 import type { Product } from '../../interfaces/product.interface';
 import styles from './Product.module.css';
-import AddToCardButton from '../AddToCardButton/addToCardButton';
 import { useNavigate } from 'react-router-dom';
 import productStyles from '../ProductCard/ProductCard.module.css';
 import cn from 'classnames';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 export const ProductPage = ({ product }: { product: Product }) => {
   const navigate = useNavigate();
@@ -17,11 +17,11 @@ export const ProductPage = ({ product }: { product: Product }) => {
           }}
         ></button>
         <h1>{product.name}</h1>
-        <AddToCardButton
+        <AddToCartButton
           id={product.id}
           label='В корзину'
           className={styles['add']}
-        ></AddToCardButton>
+        ></AddToCartButton>
       </header>
       <div className={styles['content']}>
         <img
@@ -45,8 +45,10 @@ export const ProductPage = ({ product }: { product: Product }) => {
           <div className={styles['list']}>
             <p className={styles['list-title']}>Состав:</p>
             <ul className={styles['ingredients']}>
-              {product.ingredients.map((i) => (
-                <li className={styles['ingredient']}>{i}</li>
+              {product.ingredients.map((i, index) => (
+                <li className={styles['ingredient']} key={index}>
+                  {i}
+                </li>
               ))}
             </ul>
           </div>
