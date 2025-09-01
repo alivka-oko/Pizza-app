@@ -1,7 +1,7 @@
 import type { AppDispatch, RootState } from '../../store/store';
 import { cartActions } from '../../store/cart.slice';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './addToCartButton.module.css';
+import styles from './AddToCartButton.module.css';
 import cn from 'classnames';
 import { useMemo, type MouseEvent } from 'react';
 
