@@ -1,0 +1,21 @@
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+}
+
+.image {
+  max-width: 80%;
+}
+
+.title {
+  max-width: 80%;
+  font-weight: 300;
+  font-size: 31px;
+  line-height: 120%;
+}
+
+.home-button-link {
+  text-decoration: none;
+}
